@@ -82,3 +82,63 @@ const deepFlatten = arr => [].concat(...arr.map(v => Array.isArray(v) ? deepFlat
 const fillArray = (arr, value, start = 0, end = arr.length) =>
   arr.map((v, i) => i >= start && i < end ? value : v);
 // fillArray([1,2,3,4],'8',1,3) -> [1,'8','8',4]
+
+/**
+ * Get max value from array (獲取陣列中的最大值)
+ */
+const arrayMax = arr => Math.max(...arr);
+// arrayMax([10, 1, 5]) -> 10
+
+ /**
+  * Get min value from array (獲取陣列中的最小值)
+  */
+ const arrayMin = arr => Math.min(...arr);
+// arrayMin([10, 1, 5]) -> 1
+
+/**
+ * Group by (陣列分组)
+ */
+const groupBy = (arr, func) =>
+  arr.map(typeof func === 'function' ? func : val => val[func])
+    .reduce((acc, val, i) => { acc[val] = (acc[val] || []).concat(arr[i]); return acc; }, {});
+// groupBy([6.1, 4.2, 6.3], Math.floor) -> {4: [4.2], 6: [6.1, 6.3]}
+// groupBy(['one', 'two', 'three'], 'length') -> {3: ['one', 'two'], 5: ['three']}
+
+/**
+ * Initialize array with range (初始化特定範圍的陣列)
+ */
+const initializeArrayRange = (end, start = 0) =>
+  Array.apply(null, Array(end - start)).map((v, i) => i + start);
+// initializeArrayRange(5) -> [0,1,2,3,4]
+
+/**
+ * Initialize array with values (初始化特定範圍和值的陣列)
+ */
+const initializeArray = (n, value = 0) => Array(n).fill(value);
+// initializeArray(5, 2) -> [2,2,2,2,2]
+
+/**
+ * Pick(提取)
+ */
+const pick = (obj, arr) =>
+  arr.reduce((acc, curr) => (curr in obj && (acc[curr] = obj[curr]), acc), {});
+// pick({ 'a': 1, 'b': '2', 'c': 3 }, ['a', 'c']) -> { 'a': 1, 'c': 3 }
+// pick({ 'a': 1, 'b': '2', 'c': 3 }, ['a', 'c'])['a'] -> 1
+
+/**
+ * Shuffle array (隨機排列陣列)
+ */
+const shuffle = arr => arr.sort(() => Math.random() - 0.5);
+// shuffle([1,2,3]) -> [2,3,1]
+
+/**
+ * Sum of array of numbers (數字陣列加總)
+ */
+const sum = arr => arr.reduce((acc, val) => acc + val, 0);
+// sum([1,2,3,4]) -> 10
+
+/**
+ * Unique values of array (陣列過濾重複)
+ */
+const unique = arr => [...new Set(arr)];
+// unique([1,2,2,3,4,4,5]) -> [1,2,3,4,5]

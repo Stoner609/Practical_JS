@@ -2,8 +2,8 @@
  * Array concatenation (陣列拼接)
  * 使用 Array.concat()，通過 args中附加任何陣列合值來拼接一個陣列
  */
-const ArrayConcat = (arr, ...args) => [].concat(arr, ...args);
-//console.log(ArrayConcat([1], [1,2,3, [4]]));
+//const ArrayConcat = (arr, ...args) => [].concat(arr, ...args);
+console.log(ArrayConcat([1], [1,2,3, [4]])); // > [ 1, 1, 2, 3, [ 4 ] ]
 
 /**
  * Array difference (陣列比較)
@@ -14,7 +14,7 @@ const difference = (a, b) => {
     const s = new Set(b); 
     return a.filter(x => !s.has(x));
 }
-//console.log(difference([1,2,3], [1,2]));
+//console.log(difference([1,2,3], [1,2])); > [3]
 
 /**
  * Array intersection  (陣列交集)
@@ -23,7 +23,7 @@ const intersection  = (a, b) => {
     const s = new Set(b);
     return a.filter(x => s.has(x));
 }
-//console.log(intersection([1,2,3], [4,3,2]));
+//console.log(intersection([1,2,3], [4,3,2])); > [ 2, 3 ]
 
 /**
  * Array remove (移除陣列的元素)
@@ -33,21 +33,21 @@ const remove = (arr, func) =>
         arr.splice(arr.indexOf(val), 1);
         return acc.concat(val);
     }, []) : [];
-console.log(remove([1, 2, 3, 4], n => n % 2 ==0 ));
+//console.log(remove([1, 2, 3, 4], n => n % 2 ==0 )); > [ 2, 4 ]
 
 /**
  * Array sample (陣列隨機取1個元素)
  * 
  */
 const sample = arr => arr[Math.floor(Math.random() * arr.length)];
-//console.log(sample([3,7,9,11]))
+//console.log(sample([3,7,9,11])) > 7
 
 /**
  * Array union (數組結合)
  * 用陣列 a 和 b 的所有值創建一個 Set 對象，並轉換成一個陣列。
  */
 const union = (a, b) => Array.from(new Set([...a, ...b]));
-//console.log(union([1,2,3], [4,5,6,1,2,3,7] ));
+//console.log(union([1,2,3], [4,5,6,1,2,3,7] )); > [ 1, 2, 3, 4, 5, 6, 7 ]
 
 /**
  * Array without (從陣列中排除給定值)
@@ -74,7 +74,7 @@ const countOccurrences = (arr, value) => arr.reduce((a, v) => v === value ? a + 
  * 遞迴平鋪每個陣列元素。
  */
 const deepFlatten = arr => [].concat(...arr.map(v => Array.isArray(v) ? deepFlatten(v) : v));
-//console.log(deepFlatten([1,[2],[[3],4],5]));
+//console.log(deepFlatten([1,[2],[[3],4],5])); > [ 1, 2, 3, 4, 5 ]
 
 /**
  * Fill array (填充陣列)

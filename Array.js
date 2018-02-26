@@ -2,8 +2,8 @@
  * Array concatenation (陣列拼接)
  * 使用 Array.concat()，通過 args中附加任何陣列合值來拼接一個陣列
  */
-//const ArrayConcat = (arr, ...args) => [].concat(arr, ...args);
-console.log(ArrayConcat([1], [1,2,3, [4]])); // > [ 1, 1, 2, 3, [ 4 ] ]
+const ArrayConcat = (arr, ...args) => [].concat(arr, ...args);
+//console.log(ArrayConcat([1], [1,2,3, [4]])); // > [ 1, 1, 2, 3, [ 4 ] ]
 
 /**
  * Array difference (陣列比較)
